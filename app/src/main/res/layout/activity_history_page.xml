@@ -26,15 +26,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_home_24_active"
+                android:src="@drawable/ic_baseline_home_24"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                android:text="Home"
-                android:textColor="@color/dark_green"/>
+                android:text="Home"/>
 
         </LinearLayout>
 
@@ -49,14 +48,15 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_history_24"
+                android:src="@drawable/ic_baseline_history_24_active"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                android:text="History"/>
+                android:text="History"
+                android:textColor="@color/dark_green"/>
 
         </LinearLayout>
 
