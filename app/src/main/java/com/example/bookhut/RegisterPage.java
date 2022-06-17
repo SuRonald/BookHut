@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookhut.helper.UserDataHelper;
+
 public class RegisterPage extends AppCompatActivity implements View.OnClickListener {
 
     UserDataHelper UHelper = new UserDataHelper(this);
