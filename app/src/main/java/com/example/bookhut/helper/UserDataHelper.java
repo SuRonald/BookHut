@@ -1,10 +1,13 @@
-package com.example.bookhut;
+package com.example.bookhut.helper;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.example.bookhut.data.UserData;
+import com.example.bookhut.database.DatabaseHelper;
 
 public class UserDataHelper {
     String query;

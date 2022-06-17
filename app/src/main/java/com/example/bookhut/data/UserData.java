@@ -1,4 +1,4 @@
-package com.example.bookhut;
+package com.example.bookhut.data;
 
 public class UserData {
     int userID;
