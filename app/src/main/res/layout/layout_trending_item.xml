@@ -1,42 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:id="@+id/bookCard"
+    android:layout_margin="5dp">
 
-    <ImageView
-        android:id="@+id/bookCover"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="16dp"
-        />
-
-    <TextView
-        android:id="@+id/txtBookTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/bookCover"
-        android:fontFamily="@font/lato_bold"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"
-        />
+        android:layout_margin="10dp"
+        android:padding="5dp">
 
-    <TextView
-        android:id="@+id/txtBookAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtBookTitle"
-        android:layout_toRightOf="@id/bookCover"
-        android:fontFamily="@font/lato"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/bookImage"
+            android:src="@drawable/ic_launcher_background"
+            android:gravity="center_horizontal"/>
 
-    <TextView
-        android:id="@+id/txtBookRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtBookAuthor"
-        android:layout_toRightOf="@+id/bookCover"
-        android:fontFamily="@font/lato_regular"
-        android:textSize="12sp"
-        android:layout_marginTop="8dp"/>
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/bookTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bookTitle"
+                android:fontFamily="@font/lato_bold"
+                android:textStyle="bold"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="By "
+                    android:textSize="17dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bookAuthor"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="bookAuthor"
+                    android:textSize="18dp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bookRating"
+                    android:fontFamily="@font/lato_bold"
+                    android:layout_centerVertical="true"
+                    android:text="bookRating"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="/5"
+                    android:layout_toRightOf="@+id/bookRating"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/maxStar"
+                    android:textSize="17dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_star_24"
+                    android:id="@+id/ratingStar"
+                    android:layout_toRightOf="@+id/maxStar"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

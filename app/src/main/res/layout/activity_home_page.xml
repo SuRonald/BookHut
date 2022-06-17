@@ -4,61 +4,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context=".HomePage">
 
-    <TextView
-        android:id="@+id/headerHome"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navbar">
+
+        <TextView
+            android:id="@+id/headerHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="32dp"
+            android:fontFamily="@font/lato_bold"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/txtPopularNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Popular Now"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="24sp"
+            android:layout_below="@+id/headerHome"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/popularList"
+            android:layout_below="@+id/txtPopularNow"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/txtTrendingBooks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trending Books"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="24sp"
+            android:layout_below="@+id/popularList"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/trendingList"
+            android:layout_below="@+id/txtTrendingBooks"
+            android:layout_marginTop="16dp"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="32sp"
-        android:fontFamily="@font/lato_bold"
+        android:id="@+id/navbar"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"/>
+        android:layout_alignParentBottom="true">
 
-    <TextView
-        android:id="@+id/txtPopularNow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Popular Now"
-        android:fontFamily="@font/lato_bold"
-        android:textSize="24sp"
-        android:layout_below="@+id/headerHome"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/homePack">
 
-    <TextView
-        android:id="@+id/txtShowAllPopular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/headerHome"
-        android:layout_toRightOf="@+id/txtPopularNow"
-        android:text="Show All"
-        android:layout_alignBaseline="@id/txtPopularNow"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/dark_green"
-        android:layout_marginLeft="168dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_home_24_active"
+                android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/txtTrendingBooks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Trending Books"
-        android:fontFamily="@font/lato_bold"
-        android:textSize="24sp"
-        android:layout_below="@+id/txtPopularNow"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Home"
+                android:textColor="@color/dark_green"/>
 
-    <TextView
-        android:id="@+id/txtShowAllTrending"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/headerHome"
-        android:layout_toRightOf="@+id/txtTrendingBooks"
-        android:text="Show All"
-        android:layout_alignBaseline="@id/txtTrendingBooks"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/dark_green"
-        android:layout_marginLeft="144dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:orientation="vertical"
+            android:id="@+id/historyPack">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_history_24"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="History"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/userPack">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Profile"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </RelativeLayout>

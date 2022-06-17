@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY (BookID) REFERENCES BookDatas (BookID))";
         sqLiteDatabase.execSQL(query);
 
-        query = "CREATE TABLE BookDatas (BookID TEXT PRIMARY KEY," +
+        query = "CREATE TABLE BookDatas (BookID INTEGER PRIMARY KEY," +
                 "BookName TEXT not null," +
                 "BookAuthor TEXT not null," +
                 "BookRating REAL not null," +
