@@ -1,4 +1,4 @@
-package com.example.bookhut;
+package com.example.bookhut.recyclerview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookhut.DetailPage;
+import com.example.bookhut.R;
 import com.example.bookhut.data.BookData;
 
 import java.util.Vector;
@@ -69,7 +71,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
         @Override
         public void onClick(View view) {
-            movePage = new Intent(view.getContext(), BookDetail.class);
+            movePage = new Intent(view.getContext(), DetailPage.class);
             movePage.putExtra("bookId", bookId);
             view.getContext().startActivity(movePage);
         }

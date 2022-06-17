@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.bookhut.recyclerview.PopularAdapter;
+import com.example.bookhut.recyclerview.TrendingAdapter;
 import com.example.bookhut.data.BookData;
 import com.example.bookhut.helper.BookDataHelper;
 
@@ -28,20 +30,20 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         BHelper.open();
         Vector<BookData> tempBookList = BHelper.viewBooks();
         BHelper.close();
-        Vector<BookData> poopularList = new Vector<>();
+        Vector<BookData> popularList = new Vector<>();
         Vector<BookData> trendingList = new Vector<>();
         BookData temp;
 
         for (int i = 0; i < 3; i = i+2){
             temp = tempBookList.get(i);
-            poopularList.add(temp);
+            popularList.add(temp);
             temp = tempBookList.get(i+1);
             trendingList.add(temp);
         }
 
         RecyclerView popularrv = findViewById(R.id.popularList);
         PopularAdapter popularAdapter = new PopularAdapter(this);
-        popularAdapter.setBooks(poopularList);
+        popularAdapter.setBooks(popularList);
         popularrv.setAdapter(popularAdapter);
         popularrv.setLayoutManager(new GridLayoutManager(this, 2));
 
