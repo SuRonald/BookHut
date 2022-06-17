@@ -1,5 +1,6 @@
 package com.example.bookhut.helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -62,23 +63,55 @@ public class UserDataHelper {
         return tempList;
     }
 
-    public int countUsers() {
-        query = "SELECT * FROM UserDatas";
-        cursor = db.rawQuery(query, null);
-        int count = cursor.getCount();
-        cursor.close();
-
-        return count;
+    public UserData checkEmail(String email){
+        cursor = db.rawQuery("SELECT * FROM UserDatas WHERE UserEmail = ?", new String[]{email});
+        UserData temp = null;
+        if (cursor != null && cursor.getCount() > 0){
+            cursor.moveToFirst();
+            temp = new UserData();
+            temp.setUserID(cursor.getInt(0));
+            temp.setUserEmail(cursor.getString(1));
+            temp.setUserName(cursor.getString(2));
+            temp.setUserPassword(cursor.getString(3));
+            temp.setPurchaseCount(cursor.getInt(4));
+            cursor.close();
+        }
+        return temp;
     }
 
-    public void insertUser(int userID, String userEmail, String userName, String userPassword, int purchaseCount){
-        query = "INSERT INTO UserDatas VALUES (" + userID + ", '" + userEmail + "', '" + userName + "', '" +  userPassword + "', " + purchaseCount + ")";
-        db.execSQL(query);
-        Log.d("CekUser", userID + " " + userEmail + " " + userName + " " + userPassword + " " + purchaseCount);
+    public void insertUser(String userEmail, String userName, String userPassword, int purchaseCount){
+        ContentValues cv = new ContentValues();
+        cv.put("UserEmail", userEmail);
+        cv.put("UserName", userName);
+        cv.put("UserPassword", userPassword);
+        cv.put("PurchaseCount", purchaseCount);
+
+        db.insert("UserDatas", null, cv);
+//        query = "INSERT INTO UserDatas VALUES ('" + userEmail + "', '" + userName + "', '" +  userPassword + "', " + purchaseCount + ")";
+//        db.execSQL(query);
+        Log.d("CekUser", userEmail + " " + userName + " " + userPassword + " " + purchaseCount);
     }
 
     public void updateCount(int userID, int purchaseCount){
         query = "UPDATE UserDatas SET PurchaseCount = " + purchaseCount + " WHERE UserID = " + userID;
+        cursor = db.rawQuery(query, null);
+
+        if (cursor != null){
+            db.execSQL(query);
+        }
+    }
+
+    public void updateName(int userID, String userName){
+        query = "UPDATE UserDatas SET UserName = '" + userName + "' WHERE UserID = " + userID;
+        cursor = db.rawQuery(query, null);
+
+        if (cursor != null){
+            db.execSQL(query);
+        }
+    }
+
+    public void updateEmail(int userID, String userEmail){
+        query = "UPDATE UserDatas SET UserEmail = '" + userEmail + "' WHERE UserID = " + userID;
         cursor = db.rawQuery(query, null);
 
         if (cursor != null){

@@ -44,9 +44,7 @@ public class RegisterPage extends AppCompatActivity implements View.OnClickListe
             else if (regisEmail.getText().toString().endsWith(".com") && regisUsername.getText().toString().length() >= 3 && regisPassword.getText().toString().length() >= 3){
                 errMessage.setText("");
                 UHelper.open();
-                accCount = UHelper.countUsers();
-                accCount++;
-                UHelper.insertUser(accCount, regisEmail.getText().toString(), regisUsername.getText().toString(), regisPassword.getText().toString(), 0);
+                UHelper.insertUser(regisEmail.getText().toString(), regisUsername.getText().toString(), regisPassword.getText().toString(), 0);
                 UHelper.close();
                 Toast.makeText(this, "Register Successful!!", Toast.LENGTH_LONG).show();
                 onBackPressed();

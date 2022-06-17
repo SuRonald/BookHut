@@ -37,7 +37,7 @@ public class TransactionDataHelper {
         cursor.moveToFirst();
 
         Vector<TransactionData> tempList = new Vector<>();
-        String transID;
+        int transID;
         int userID;
         int bookID;
         String transDate;
@@ -47,7 +47,7 @@ public class TransactionDataHelper {
             do {
                 userID = cursor.getInt(cursor.getColumnIndexOrThrow("UserID"));
                 if (userID == userid){
-                    transID = cursor.getString(cursor.getColumnIndexOrThrow("TransID"));
+                    transID = cursor.getInt(cursor.getColumnIndexOrThrow("TransID"));
                     bookID = cursor.getInt(cursor.getColumnIndexOrThrow("BookID"));
                     transDate = cursor.getString(cursor.getColumnIndexOrThrow("TransDate"));
                     transQnty = cursor.getInt(cursor.getColumnIndexOrThrow("TransQnty"));
