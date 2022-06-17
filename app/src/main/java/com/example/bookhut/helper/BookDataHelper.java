@@ -65,18 +65,4 @@ public class BookDataHelper {
         cursor.close();
         return tempList;
     }
-
-    public int countBooks() {
-        query = "SELECT * FROM BookDatas";
-        cursor = db.rawQuery(query, null);
-        int count = cursor.getCount();
-        cursor.close();
-
-        return count;
-    }
-
-    public void insertBook(int bookID, String bookName, String bookAuthor, int bookRating, int bookPrice, String bookImage, String bookDesc){
-        query = "INSERT INTO BookDatas VALUES (" + bookID + ", '" + bookName + "', '" + bookAuthor + "', " + bookRating + ", " + bookPrice + ", '" + bookImage + "', '" + bookDesc + "')";
-        db.execSQL(query);
-    }
 }
