@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/bookCover"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:id="@+id/txtBookTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bookCover"
+        android:fontFamily="@font/lato_bold"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        />
+
+    <TextView
+        android:id="@+id/txtBookAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtBookTitle"
+        android:layout_toRightOf="@id/bookCover"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/txtBookRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtBookAuthor"
+        android:layout_toRightOf="@+id/bookCover"
+        android:fontFamily="@font/lato_regular"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"/>
+</RelativeLayout>
