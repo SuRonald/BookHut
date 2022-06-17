@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     errMessage.setText("Invalid Email Address or Password!!");
                 }
                 else {
-                    movePage = new Intent(this, HomePage.class);
+                    movePage = new Intent(this, ProfilePage.class);
                     Toast.makeText(this, "Login Successful!", Toast.LENGTH_LONG).show();
                     startActivity(movePage);
                 }

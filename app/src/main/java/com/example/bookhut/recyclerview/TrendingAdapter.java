@@ -1,4 +1,4 @@
-package com.example.bookhut;
+package com.example.bookhut.recyclerview;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bookhut.R;
 
 public class TrendingAdapter extends RecyclerView.Adapter<TrendingViewHolder>{
     Context _context;

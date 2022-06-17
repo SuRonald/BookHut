@@ -65,4 +65,9 @@ public class BookDataHelper {
         cursor.close();
         return tempList;
     }
+
+//    public Vector<BookData> authSearch(String author) {
+//        Vector<BookData> search = new Vector<>();
+//        db = helper.getReadableDatabase();
+//    }
 }

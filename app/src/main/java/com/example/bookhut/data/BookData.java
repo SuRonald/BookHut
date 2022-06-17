@@ -19,6 +19,10 @@ public class BookData {
         this.bookDesc = bookDesc;
     }
 
+    public BookData() {
+
+    }
+
     public int getBookID() {
         return bookID;
     }

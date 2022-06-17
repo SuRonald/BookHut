@@ -1,4 +1,4 @@
-package com.example.bookhut;
+package com.example.bookhut.recyclerview;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bookhut.R;
 
 public class PopularViewHolder extends RecyclerView.ViewHolder{
 
