@@ -1,9 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="30dp"
     tools:context=".RegisterPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/appTittle"
+        android:text="Book Hut"
+        android:textSize="40dp"
+        android:textColor="@color/dark_green"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailTv"
+        android:layout_below="@+id/appTittle"
+        android:text="Email Address"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailRegis"
+        android:layout_below="@+id/emailTv"
+        android:hint="Input Email Address"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameTv"
+        android:layout_below="@+id/emailRegis"
+        android:text="Username"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameRegis"
+        android:layout_below="@+id/usernameTv"
+        android:hint="Input Username"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passTv"
+        android:layout_below="@+id/usernameRegis"
+        android:layout_marginTop="15dp"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/passRegis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passTv"
+        android:hint="Input Password"
+        tools:visibility="visible"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/errMsg"
+        android:layout_below="@+id/passRegis"
+        android:layout_marginTop="15dp"
+        android:textColor="#E83A14"
+        android:text=""
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerBtn"
+        android:layout_below="@+id/errMsg"
+        android:text="REGISTER"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_below="@+id/registerBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oops I already have an account! "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reLogin"
+            android:text="Login"
+            android:textColor="@color/dark_green"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
