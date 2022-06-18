@@ -26,8 +26,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         query = "CREATE TABLE TransactionDatas (TransID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "UserID INTEGER not null," +
-                "BookID TEXT not null," +
-                "TransDate DATE not null," +
+                "BookID INTEGER not null," +
+                "TransDate TEXT not null," +
                 "TransQnty INTEGER not null," +
                 "FOREIGN KEY (UserID) REFERENCES UserDatas (UserID)," +
                 "FOREIGN KEY (BookID) REFERENCES BookDatas (BookID))";

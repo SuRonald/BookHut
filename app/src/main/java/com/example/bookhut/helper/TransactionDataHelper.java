@@ -1,5 +1,6 @@
 package com.example.bookhut.helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -64,9 +65,14 @@ public class TransactionDataHelper {
         return tempList;
     }
 
-    public void insertTransaction(String transID, int userID, int bookID, String transDate, int transQnty){
-        query = "INSERT INTO TransactionDatas VALUES ('" + transID + "', " + userID + ", " + bookID + ", '" + transDate + "', " + transQnty + ")";
-        db.execSQL(query);
+    public void insertTransaction(int userID, int bookID, String transDate, int transQnty){
+        ContentValues cv = new ContentValues();
+        cv.put("UserID", userID);
+        cv.put("BookID", bookID);
+        cv.put("TransDate", transDate);
+        cv.put("TransQnty", transQnty);
+
+        db.insert("TransactionDatas", null, cv);
     }
 
     public void deleteTransaction(int userID){
