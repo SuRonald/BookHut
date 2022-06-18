@@ -25,13 +25,15 @@
         android:layout_below="@+id/appTittle"
         android:text="Email Address"
         android:textSize="18dp"
-        android:layout_marginTop="20dp"/>
+        android:fontFamily="@font/lato_regular"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/emailLgn"
         android:layout_below="@+id/emailTv"
+        android:fontFamily="@font/lato_regular"
         android:hint="Input Email Address"/>
 
     <TextView
@@ -41,6 +43,7 @@
         android:layout_below="@+id/emailLgn"
         android:layout_marginTop="15dp"
         android:textSize="18dp"
+        android:fontFamily="@font/lato_regular"
         android:text="Password" />
 
     <EditText
@@ -49,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/passTv"
         android:hint="Input Password"
-        tools:visibility="visible"
+        android:fontFamily="@font/lato_regular"
         android:inputType="textPassword"/>
 
     <TextView
@@ -68,6 +71,7 @@
         android:id="@+id/loginBtn"
         android:layout_below="@+id/errMsg"
         android:text="LOGIN"
+        android:fontFamily="@font/lato_bold"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"/>
@@ -83,14 +87,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?  "/>
+            android:text="Don't have an account?  "
+            android:fontFamily="@font/lato_regular"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/reRegis"
             android:text="Register"
-            android:textColor="@color/dark_green"/>
+            android:textColor="@color/dark_green"
+            android:fontFamily="@font/lato_bold"/>
 
     </LinearLayout>
 

@@ -24,6 +24,7 @@
         android:id="@+id/emailTv"
         android:layout_below="@+id/appTittle"
         android:text="Email Address (Ends with .com)"
+        android:fontFamily="@font/lato_regular"
         android:layout_marginTop="15dp"/>
 
     <EditText
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/emailRegis"
         android:layout_below="@+id/emailTv"
+        android:fontFamily="@font/lato_regular"
         android:hint="Input Email Address"/>
 
     <TextView
@@ -39,6 +41,7 @@
         android:id="@+id/usernameTv"
         android:layout_below="@+id/emailRegis"
         android:text="Username"
+        android:fontFamily="@font/lato_regular"
         android:layout_marginTop="15dp"/>
 
     <EditText
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/usernameRegis"
         android:layout_below="@+id/usernameTv"
+        android:fontFamily="@font/lato_regular"
         android:hint="Input Username"/>
 
     <TextView
@@ -54,7 +58,8 @@
         android:id="@+id/passTv"
         android:layout_below="@+id/usernameRegis"
         android:layout_marginTop="15dp"
-        android:text="Password (Longer than 4 characters)" />
+        android:text="Password (Longer than 4 characters)"
+        android:fontFamily="@font/lato_regular"/>
 
     <EditText
         android:id="@+id/passRegis"
@@ -63,7 +68,8 @@
         android:layout_below="@id/passTv"
         android:hint="Input Password"
         tools:visibility="visible"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:fontFamily="@font/lato_regular"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,7 +88,8 @@
         android:layout_below="@+id/errMsg"
         android:text="REGISTER"
         android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/lato_bold"/>
 
     <LinearLayout
         android:layout_below="@+id/registerBtn"
@@ -94,14 +101,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oops I already have an account! "/>
+            android:text="Oops I already have an account! "
+            android:fontFamily="@font/lato_regular"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/reLogin"
             android:text="Login"
-            android:textColor="@color/dark_green"/>
+            android:textColor="@color/dark_green"
+            android:fontFamily="@font/lato_bold"/>
 
     </LinearLayout>
 

@@ -266,6 +266,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
+                android:fontFamily="@font/lato_regular"
                 android:text="Home"/>
 
         </LinearLayout>
@@ -288,6 +289,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
+                android:fontFamily="@font/lato_regular"
                 android:text="History"/>
 
         </LinearLayout>
@@ -310,7 +312,7 @@
                 android:textSize="18dp"
                 android:text="Profile"
                 android:textColor="@color/dark_green"
-                android:textStyle="bold"/>
+                android:fontFamily="@font/lato_bold"/>
 
         </LinearLayout>
 
