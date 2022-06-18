@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.bookhut.helper.TransactionDataHelper;
 import com.example.bookhut.helper.UserDataHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.bookhut.DataVault.bookData;
@@ -30,6 +31,9 @@ public class DetailPage extends AppCompatActivity implements View.OnClickListene
     TextView bookTitle, bookAuthor, bookRating, bookPrice, bookDesc, qnty;
     Intent movePage;
     int quantity = 0;
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +80,9 @@ public class DetailPage extends AppCompatActivity implements View.OnClickListene
         }
         else if (view.getId() == R.id.buyBtn){
             if (quantity != 0 ){
+                date = simpleDateFormat.format(new Date());
                 THelper.open();
-                THelper.insertTransaction(currUser.getUserID(), bookData.getBookID(), new Date().toString(), quantity);
+                THelper.insertTransaction(currUser.getUserID(), bookData.getBookID(), date, quantity);
                 THelper.close();
                 currUser.setPurchaseCount(currUser.getPurchaseCount() + 1);
                 UHelper.open();

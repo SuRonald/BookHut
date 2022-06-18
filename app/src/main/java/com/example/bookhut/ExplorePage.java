@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.example.bookhut.data.BookData;
 import com.example.bookhut.helper.BookDataHelper;
-import com.example.bookhut.recyclerview.BookAdapter;
 import com.example.bookhut.recyclerview.ExploreAdapter;
 
 import java.util.Vector;

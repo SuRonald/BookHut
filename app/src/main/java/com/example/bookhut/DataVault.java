@@ -9,6 +9,5 @@ import java.util.Vector;
 public class DataVault {
     public static Vector<BookData> bookList = new Vector<>();
     public static BookData bookData = new BookData();
-    public static Vector<TransactionData> transactionList = new Vector<>();
     public static UserData currUser;
 }
