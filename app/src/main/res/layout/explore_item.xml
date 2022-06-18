@@ -12,13 +12,14 @@
 
     <RelativeLayout
         android:layout_width="120dp"
-        android:layout_height="130dp"
-        android:elevation="10dp">
+        android:layout_height="130dp">
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/roundcorner_boxitem"
+            app:cardBackgroundColor="@color/dark_green"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
             android:alpha="0.2"/>
 
         <ImageView
@@ -29,7 +30,6 @@
             android:layout_height="match_parent"/>
 
     </RelativeLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
             android:id="@+id/bookAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="By Author"
             android:textStyle="bold"
             android:fontFamily="@font/lato_regular"
@@ -61,7 +61,7 @@
             android:id="@+id/bookRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/lato_regular"
             android:textColor="@color/black"
             android:text="Rating"/>
