@@ -309,7 +309,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:text="Profile"
-                android:textColor="@color/dark_green"/>
+                android:textColor="@color/dark_green"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
