@@ -155,4 +155,32 @@ public class BookDataHelper {
 
         return search;
     }
+
+    public BookData takeBook(int bookId) {
+        BookData search = null;
+        db = helper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM BookDatas WHERE BookID LIKE " + bookId, null);
+        cursor.moveToFirst();
+
+        String tempName, tempAuthor, tempDesc, tempImg;
+        Integer tempID, tempPrice; Double tempRating;
+
+        if (cursor != null && cursor.getCount() > 0){
+            do {
+                tempImg = cursor.getString(cursor.getColumnIndexOrThrow("BookImage"));
+                tempID = cursor.getInt(cursor.getColumnIndexOrThrow("BookID"));
+                tempName = cursor.getString(cursor.getColumnIndexOrThrow("BookName"));
+                tempAuthor = cursor.getString(cursor.getColumnIndexOrThrow("BookAuthor"));
+                tempDesc = cursor.getString(cursor.getColumnIndexOrThrow("BookDesc"));
+                tempPrice = cursor.getInt(cursor.getColumnIndexOrThrow("BookPrice"));
+                tempRating = cursor.getDouble(cursor.getColumnIndexOrThrow("BookRating"));
+
+                search = new BookData(tempID, tempName, tempAuthor, tempRating, tempPrice, tempImg, tempDesc);
+
+                cursor.moveToNext();
+            } while (!cursor.isAfterLast());
+        }
+
+        return search;
+    }
 }
