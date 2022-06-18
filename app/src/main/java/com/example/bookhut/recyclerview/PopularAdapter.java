@@ -19,10 +19,13 @@ import com.example.bookhut.data.BookData;
 
 import java.util.Vector;
 
+import static com.example.bookhut.DataVault.bookData;
+
 public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
     Intent movePage;
     Context ctx;
     Vector<BookData> books;
+    BookData temp;
 
     public PopularAdapter(Context ctx){
         this.ctx = ctx;
@@ -42,9 +45,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull PopularAdapter.ViewHolder holder, int position) {
         holder.bookId = books.get(position).getBookID();
-        Glide.with(ctx).load(books.get(position).getBookImage()).into(holder.bookImage);
+        holder.bookPic = books.get(position).getBookImage();
+        Glide.with(ctx).load(holder.bookPic).into(holder.bookImage);
         holder.bookTitle.setText(books.get(position).getBookName());
         holder.bookAuthor.setText("By " + books.get(position).getBookAuthor());
+        holder.bookStar = books.get(position).getBookRating();
+        holder.bookPrice = books.get(position).getBookPrice();
+        holder.bookDesc = books.get(position).getBookDesc();
     }
 
     @Override
@@ -57,7 +64,9 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         CardView bookCard;
         ImageView bookImage;
         TextView bookTitle, bookAuthor;
-        int bookId;
+        int bookId, bookPrice;
+        String bookPic, bookDesc;
+        Double bookStar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,7 +81,8 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         @Override
         public void onClick(View view) {
             movePage = new Intent(view.getContext(), DetailPage.class);
-            movePage.putExtra("bookId", bookId);
+            temp = new BookData(bookId, bookTitle.getText().toString(), bookAuthor.getText().toString(), bookStar, bookPrice, bookPic, bookDesc);
+            bookData = temp;
             view.getContext().startActivity(movePage);
         }
     }

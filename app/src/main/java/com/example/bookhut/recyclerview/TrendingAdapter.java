@@ -16,13 +16,17 @@ import com.bumptech.glide.Glide;
 import com.example.bookhut.DetailPage;
 import com.example.bookhut.R;
 import com.example.bookhut.data.BookData;
+import com.example.bookhut.data.UserData;
 
 import java.util.Vector;
+
+import static com.example.bookhut.DataVault.bookData;
 
 public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHolder> {
     Intent movePage;
     Context ctx;
     Vector<BookData> books;
+    BookData temp;
 
     public TrendingAdapter(Context ctx){
         this.ctx = ctx;
@@ -42,10 +46,14 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull TrendingAdapter.ViewHolder holder, int position) {
         holder.bookId = books.get(position).getBookID();
-        Glide.with(ctx).load(books.get(position).getBookImage()).into(holder.bookImage);
+        holder.bookPic = books.get(position).getBookImage();
+        Glide.with(ctx).load(holder.bookPic).into(holder.bookImage);
         holder.bookTitle.setText(books.get(position).getBookName());
         holder.bookAuthor.setText(books.get(position).getBookAuthor());
         holder.bookRating.setText("" + books.get(position).getBookRating());
+        holder.bookStar = books.get(position).getBookRating();
+        holder.bookPrice = books.get(position).getBookPrice();
+        holder.bookDesc = books.get(position).getBookDesc();
     }
 
     @Override
@@ -58,7 +66,9 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHo
         CardView bookCard;
         ImageView bookImage;
         TextView bookTitle, bookAuthor, bookRating;
-        int bookId;
+        int bookId, bookPrice;
+        String bookPic, bookDesc;
+        Double bookStar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,7 +84,8 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.ViewHo
         @Override
         public void onClick(View view) {
             movePage = new Intent(view.getContext(), DetailPage.class);
-            movePage.putExtra("bookId", bookId);
+            temp = new BookData(bookId, bookTitle.getText().toString(), bookAuthor.getText().toString(), bookStar, bookPrice, bookPic, bookDesc);
+            bookData = temp;
             view.getContext().startActivity(movePage);
         }
     }
