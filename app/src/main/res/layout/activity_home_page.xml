@@ -13,11 +13,13 @@
         android:layout_above="@+id/navbar">
 
         <TextView
-            android:id="@+id/headerHome"
+            android:id="@+id/pageTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Home"
-            android:textSize="32dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/dark_green"
             android:fontFamily="@font/lato_bold"
             android:layout_centerHorizontal="true"/>
 
@@ -27,8 +29,9 @@
             android:layout_height="wrap_content"
             android:text="Popular Now"
             android:fontFamily="@font/lato_bold"
-            android:textSize="24sp"
-            android:layout_below="@+id/headerHome"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_below="@+id/pageTitle"
             android:layout_marginTop="16dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -44,7 +47,8 @@
             android:layout_height="wrap_content"
             android:text="Trending Books"
             android:fontFamily="@font/lato_bold"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             android:layout_below="@+id/popularList"
             android:layout_marginTop="16dp"/>
 

@@ -41,43 +41,49 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="By "
-                    android:textSize="17dp"/>
+                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="#CFD2D2"
+                    android:text="By "/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/bookAuthor"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="bookAuthor"
-                    android:textSize="18dp"/>
+                    android:textStyle="bold"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="#CFD2D2"
+                    android:text="bookAuthor"/>
 
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/bookRating"
-                    android:fontFamily="@font/lato_bold"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
                     android:layout_centerVertical="true"
                     android:text="bookRating"
-                    android:textSize="18dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="/5"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
+                    android:text="/5  "
                     android:layout_toRightOf="@+id/bookRating"
                     android:layout_centerVertical="true"
                     android:id="@+id/maxStar"

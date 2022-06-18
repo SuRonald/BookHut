@@ -36,17 +36,18 @@
                 android:text="bookTitle"
                 android:fontFamily="@font/lato_bold"
                 android:textStyle="bold"
-                android:textAlignment="center"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bookAuthor"
-                android:fontFamily="@font/lato_bold"
+                android:textStyle="bold"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="#CFD2D2"
                 android:text="bookAuthor"
-                android:textAlignment="center"
-                android:textSize="18dp"/>
+                android:textAlignment="center"/>
 
         </LinearLayout>
 

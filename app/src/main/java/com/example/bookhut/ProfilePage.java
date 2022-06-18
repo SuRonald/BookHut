@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.bookhut.data.UserData;
@@ -16,7 +17,7 @@ import com.example.bookhut.helper.UserDataHelper;
 
 import static com.example.bookhut.DataVault.currUser;
 
-public class ProfilePage extends AppCompatActivity {
+public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
 
     UserDataHelper UHelper = new UserDataHelper(this);
 
@@ -24,6 +25,8 @@ public class ProfilePage extends AppCompatActivity {
     EditText edtName, edtEmail;
     Button saveName, saveEmail, btnLogout, btnDelete;
     View formName, formEmail, dispName, dispEmail;
+    LinearLayout home, history, profile;
+    Intent movePage;
 
     Integer flag;
 
@@ -132,5 +135,28 @@ public class ProfilePage extends AppCompatActivity {
         dispEmail = findViewById(R.id.editEmail);
         formName = findViewById(R.id.formName);
         formEmail = findViewById(R.id.formEmail);
+
+        home = findViewById(R.id.homePack);
+        home.setOnClickListener(this);
+        history = findViewById(R.id.historyPack);
+        history.setOnClickListener(this);
+        profile = findViewById(R.id.userPack);
+        profile.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.homePack){
+            movePage = new Intent(view.getContext(), HomePage.class);
+            startActivity(movePage);
+        }
+        else if (view.getId() == R.id.historyPack){
+            movePage = new Intent(view.getContext(), HistoryPage.class);
+            startActivity(movePage);
+        }
+        else if (view.getId() == R.id.userPack){
+            movePage = new Intent(view.getContext(), ProfilePage.class);
+            startActivity(movePage);
+        }
     }
 }
