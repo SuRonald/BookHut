@@ -40,7 +40,7 @@ public class BookDataHelper {
         int bookID;
         String bookName;
         String bookAuthor;
-        int bookRating;
+        Double bookRating;
         int bookPrice;
         String bookImage;
         String bookDesc;
@@ -50,7 +50,7 @@ public class BookDataHelper {
                 bookID = cursor.getInt(cursor.getColumnIndexOrThrow("BookID"));
                 bookName = cursor.getString(cursor.getColumnIndexOrThrow("BookName"));
                 bookAuthor = cursor.getString(cursor.getColumnIndexOrThrow("BookAuthor"));
-                bookRating = cursor.getInt(cursor.getColumnIndexOrThrow("BookRating"));
+                bookRating = cursor.getDouble(cursor.getColumnIndexOrThrow("BookRating"));
                 bookPrice = cursor.getInt(cursor.getColumnIndexOrThrow("BookPrice"));
                 bookImage = cursor.getString(cursor.getColumnIndexOrThrow("BookImage"));
                 bookDesc = cursor.getString(cursor.getColumnIndexOrThrow("BookDesc"));
@@ -66,8 +66,33 @@ public class BookDataHelper {
         return tempList;
     }
 
-//    public Vector<BookData> authSearch(String author) {
-//        Vector<BookData> search = new Vector<>();
-//        db = helper.getReadableDatabase();
-//    }
+    public Vector<BookData> authSearch(String author) {
+        Vector<BookData> search = new Vector<>();
+        db = helper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM BookDatas WHERE BookAuthor LIKE '%" + author + "%'", null);
+        cursor.moveToFirst();
+
+        BookData temp;
+        String tempName, tempAuthor, tempDesc, tempImg;
+        Integer tempID, tempPrice; Double tempRating;
+
+        if (cursor != null && cursor.getCount() > 0){
+            do {
+                tempImg = cursor.getString(cursor.getColumnIndexOrThrow("BookImage"));
+                tempID = cursor.getInt(cursor.getColumnIndexOrThrow("BookID"));
+                tempName = cursor.getString(cursor.getColumnIndexOrThrow("BookName"));
+                tempAuthor = cursor.getString(cursor.getColumnIndexOrThrow("BookAuthor"));
+                tempDesc = cursor.getString(cursor.getColumnIndexOrThrow("BookDesc"));
+                tempPrice = cursor.getInt(cursor.getColumnIndexOrThrow("BookPrice"));
+                tempRating = cursor.getDouble(cursor.getColumnIndexOrThrow("BookRating"));
+
+                temp = new BookData(tempID, tempName, tempAuthor, tempRating, tempPrice, tempImg, tempDesc);
+                search.add(temp);
+
+                cursor.moveToNext();
+            } while (!cursor.isAfterLast());
+        }
+
+        return search;
+    }
 }

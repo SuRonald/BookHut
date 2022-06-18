@@ -28,10 +28,10 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ExploreV
         this.itemClickListener = onItemClickListener;
 
         if (bookLists.isEmpty()){
-
+            ExplorePage.noDataShow();
         }
         else {
-
+            ExplorePage.noDataHide();
         }
 
     }
@@ -47,7 +47,7 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ExploreV
     public void onBindViewHolder(@NonNull ExploreAdapter.ExploreViewHolder holder, int position) {
         holder.bName.setText(bookLists.get(position).getBookName());
         holder.bAuthor.setText(bookLists.get(position).getBookAuthor());
-        holder.bRating.setText(bookLists.get(position).getBookRating());
+        holder.bRating.setText(bookLists.get(position).getBookRating().toString());
         Glide.with(context)
                 .load(bookLists.get(position).getBookImage())
                 .into(holder.bImage);

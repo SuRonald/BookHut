@@ -4,12 +4,12 @@ public class BookData {
     int bookID;
     String bookName;
     String bookAuthor;
-    int bookRating;
+    Double bookRating;
     int bookPrice;
     String bookImage;
     String bookDesc;
 
-    public BookData(int bookID, String bookName, String bookAuthor, int bookRating, int bookPrice, String bookImage, String bookDesc) {
+    public BookData(int bookID, String bookName, String bookAuthor, Double bookRating, int bookPrice, String bookImage, String bookDesc) {
         this.bookID = bookID;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
@@ -35,7 +35,7 @@ public class BookData {
         return bookAuthor;
     }
 
-    public int getBookRating() {
+    public Double getBookRating() {
         return bookRating;
     }
 
