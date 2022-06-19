@@ -7,6 +7,8 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -15,6 +17,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,11 +52,22 @@ public class ExplorePage extends AppCompatActivity {
 
         init();
 
+        filName.setTextColor(ContextCompat.getColor(this, R.color.dark_green));
+        filName.setTypeface(ResourcesCompat.getFont(this, R.font.lato_bold));
+        flag = 1;
+
+        BHelper.open();
+        ExploreAdapter adapter = new ExploreAdapter(ExplorePage.this, BHelper.viewBooks());
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager manager = new LinearLayoutManager(ExplorePage.this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
+        BHelper.close();
+
         filAuth.setOnClickListener(v -> {
             if (filAuth.getCurrentTextColor() != 0xFF116557){
                 filAuth.setTextColor(ContextCompat.getColor(this, R.color.dark_green));
                 filAuth.setTypeface(ResourcesCompat.getFont(this, R.font.lato_bold));
-                flag = 1;
+                flag = 2;
                 filName.setTextColor(ContextCompat.getColor(this, android.R.color.tab_indicator_text));
                 filName.setTypeface(ResourcesCompat.getFont(this, R.font.lato_regular));
             }
@@ -67,7 +82,7 @@ public class ExplorePage extends AppCompatActivity {
             if (filName.getCurrentTextColor() != 0xFF116557){
                 filName.setTextColor(ContextCompat.getColor(this, R.color.dark_green));
                 filName.setTypeface(ResourcesCompat.getFont(this, R.font.lato_bold));
-                flag = 2;
+                flag = 1;
                 filAuth.setTextColor(ContextCompat.getColor(this, android.R.color.tab_indicator_text));
                 filAuth.setTypeface(ResourcesCompat.getFont(this, R.font.lato_regular));
             }
@@ -85,31 +100,18 @@ public class ExplorePage extends AppCompatActivity {
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (i == KeyEvent.KEYCODE_ENTER)){
                     String inpSearch = searchField.getText().toString();
-                    if (flag == 1){
+                    hideKeyboard();
+                    if (flag == 2){
                         BHelper.open();
-                        ExploreAdapter adapter = new ExploreAdapter(ExplorePage.this, BHelper.authSearch(inpSearch), new ExploreAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(BookData books, int position) {
-                                Intent moveDetail = new Intent(ExplorePage.this, DetailPage.class);
-                                bookData = books;
-                                startActivity(moveDetail);
-                            }
-                        });
+                        ExploreAdapter adapter = new ExploreAdapter(ExplorePage.this, BHelper.authSearch(inpSearch));
                         recyclerView.setAdapter(adapter);
                         LinearLayoutManager manager = new LinearLayoutManager(ExplorePage.this, LinearLayoutManager.VERTICAL, false);
                         recyclerView.setLayoutManager(manager);
                         BHelper.close();
                     }
-                    else if (flag == 2){
+                    else if (flag == 1){
                         BHelper.open();
-                        ExploreAdapter adapter = new ExploreAdapter(ExplorePage.this, BHelper.nameSearch(inpSearch), new ExploreAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(BookData books, int position) {
-                                Intent moveDetail = new Intent(ExplorePage.this, DetailPage.class);
-                                bookData = books;
-                                startActivity(moveDetail);
-                            }
-                        });
+                        ExploreAdapter adapter = new ExploreAdapter(ExplorePage.this, BHelper.nameSearch(inpSearch));
                         recyclerView.setAdapter(adapter);
                         LinearLayoutManager manager = new LinearLayoutManager(ExplorePage.this, LinearLayoutManager.VERTICAL, false);
                         recyclerView.setLayoutManager(manager);
@@ -122,10 +124,17 @@ public class ExplorePage extends AppCompatActivity {
                 }
                 return false;
             }
-
         });
-
     }
+
+    private void hideKeyboard(){
+        View v = this.getCurrentFocus();
+        if (v != null){
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+    }
+
     public void init(){
         filAuth = findViewById(R.id.filterAuth);
         filName = findViewById(R.id.filterName);
@@ -172,4 +181,5 @@ public class ExplorePage extends AppCompatActivity {
     public static void noDataHide(){
         noDataFound.setVisibility(View.INVISIBLE);
     }
+
 }

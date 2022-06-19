@@ -66,18 +66,25 @@ public class ProfilePage extends AppCompatActivity {
             String newEmail = edtEmail.getText().toString();
             flag = 1;
             if (newEmail.length() != 0){
-                UHelper.open();
-                UserData temp = UHelper.checkEmail(newEmail);
-                if (temp != null){
-                    edtEmail.setError("This email has already taken!");
+                if (!newEmail.endsWith(".com")){
+                    edtEmail.setError("Email must be ends with '.com'");
                     flag = 0;
                 }
-                if (flag == 1){
-                    UHelper.updateEmail(currUser.getUserID(), newEmail);
-                    UHelper.close();
-                    currUser.setUserEmail(newEmail);
-                    userEmail.setText(currUser.getUserEmail());
+                else {
+                    UHelper.open();
+                    UserData temp = UHelper.checkEmail(newEmail);
+                    if (temp != null){
+                        edtEmail.setError("This email has already taken!");
+                        flag = 0;
+                    }
+                    if (flag == 1){
+                        UHelper.updateEmail(currUser.getUserID(), newEmail);
+                        UHelper.close();
+                        currUser.setUserEmail(newEmail);
+                        userEmail.setText(currUser.getUserEmail());
+                    }
                 }
+
 
             }
             if (flag == 1){

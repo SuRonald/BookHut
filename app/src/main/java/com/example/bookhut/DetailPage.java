@@ -67,8 +67,9 @@ public class DetailPage extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.backBtn){
-            movePage = new Intent(this, HomePage.class);
-            startActivity(movePage);
+//            movePage = new Intent(this, HomePage.class);
+//            startActivity(movePage);
+            onBackPressed();
         }
         else if (view.getId() == R.id.minBtn && quantity > 0){
             quantity--;

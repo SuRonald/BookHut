@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 else {
                     movePage = new Intent(this, HomePage.class);
-                    Toast.makeText(this, "Login Successful!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
                     startActivity(movePage);
                 }
             }
