@@ -6,18 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.bookhut.data.UserData;
 import com.example.bookhut.helper.UserDataHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import static com.example.bookhut.DataVault.currUser;
 
-public class ProfilePage extends AppCompatActivity implements View.OnClickListener {
+public class ProfilePage extends AppCompatActivity {
 
     UserDataHelper UHelper = new UserDataHelper(this);
 
@@ -25,7 +27,7 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
     EditText edtName, edtEmail;
     Button saveName, saveEmail, btnLogout, btnDelete;
     View formName, formEmail, dispName, dispEmail;
-    LinearLayout home, history, profile;
+    BottomNavigationView bottomNavigationView;
     Intent movePage;
 
     Integer flag;
@@ -136,27 +138,33 @@ public class ProfilePage extends AppCompatActivity implements View.OnClickListen
         formName = findViewById(R.id.formName);
         formEmail = findViewById(R.id.formEmail);
 
-        home = findViewById(R.id.homePack);
-        home.setOnClickListener(this);
-        history = findViewById(R.id.historyPack);
-        history.setOnClickListener(this);
-        profile = findViewById(R.id.userPack);
-        profile.setOnClickListener(this);
-    }
+        bottomNavigationView = findViewById(R.id.bottomNavBar);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(3);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.homePack:
+                    movePage = new Intent(this, HomePage.class);
+                    startActivity(movePage);
+                    break;
 
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.homePack){
-            movePage = new Intent(view.getContext(), HomePage.class);
-            startActivity(movePage);
-        }
-        else if (view.getId() == R.id.historyPack){
-            movePage = new Intent(view.getContext(), HistoryPage.class);
-            startActivity(movePage);
-        }
-        else if (view.getId() == R.id.userPack){
-            movePage = new Intent(view.getContext(), ProfilePage.class);
-            startActivity(movePage);
-        }
+                case R.id.historyPack:
+                    movePage = new Intent(this, HistoryPage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.explorePack:
+                    movePage = new Intent(this, ExplorePage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.profilePack:
+                    movePage = new Intent(this, ProfilePage.class);
+                    startActivity(movePage);
+                    break;
+            }
+            return true;
+        });
     }
 }
