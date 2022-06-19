@@ -12,6 +12,8 @@ import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.example.bookhut.data.BookData;
 import com.example.bookhut.helper.BookDataHelper;
 import com.example.bookhut.recyclerview.ExploreAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Vector;
 
@@ -32,7 +35,9 @@ public class ExplorePage extends AppCompatActivity {
     static TextView noDataFound;
     EditText searchField;
     RecyclerView recyclerView;
+    BottomNavigationView bottomNavigationView;
     BookDataHelper BHelper;
+    Intent movePage;
 
     Integer flag = 0;
 
@@ -130,6 +135,35 @@ public class ExplorePage extends AppCompatActivity {
 
         BHelper = new BookDataHelper(this);
         recyclerView = findViewById(R.id.rvResult);
+
+        bottomNavigationView = findViewById(R.id.bottomNavBar);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.homePack:
+                    movePage = new Intent(this, HomePage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.historyPack:
+                    movePage = new Intent(this, HistoryPage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.explorePack:
+                    movePage = new Intent(this, ExplorePage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.profilePack:
+                    movePage = new Intent(this, ProfilePage.class);
+                    startActivity(movePage);
+                    break;
+            }
+            return true;
+        });
     }
 
     public static void noDataShow(){

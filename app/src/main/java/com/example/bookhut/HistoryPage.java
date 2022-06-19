@@ -6,21 +6,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.bookhut.data.TransactionData;
 import com.example.bookhut.helper.TransactionDataHelper;
 import com.example.bookhut.recyclerview.TransactionAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Vector;
 
 import static com.example.bookhut.DataVault.currUser;
 
-public class HistoryPage extends AppCompatActivity implements View.OnClickListener {
+public class HistoryPage extends AppCompatActivity {
 
     TransactionDataHelper THelper = new TransactionDataHelper(this);
-    LinearLayout home, history, profile;
+    BottomNavigationView bottomNavigationView;
     Intent movePage;
     Vector<TransactionData> tempTransaction;
 
@@ -39,27 +40,33 @@ public class HistoryPage extends AppCompatActivity implements View.OnClickListen
         transactionrv.setAdapter(transactionAdapter);
         transactionrv.setLayoutManager(new GridLayoutManager(this, 1));
 
-        home = findViewById(R.id.homePack);
-        home.setOnClickListener(this);
-        history = findViewById(R.id.historyPack);
-        history.setOnClickListener(this);
-        profile = findViewById(R.id.userPack);
-        profile.setOnClickListener(this);
-    }
+        bottomNavigationView = findViewById(R.id.bottomNavBar);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.homePack:
+                    movePage = new Intent(this, HomePage.class);
+                    startActivity(movePage);
+                    break;
 
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.homePack){
-            movePage = new Intent(view.getContext(), HomePage.class);
-            startActivity(movePage);
-        }
-        else if (view.getId() == R.id.historyPack){
-            movePage = new Intent(view.getContext(), HistoryPage.class);
-            startActivity(movePage);
-        }
-        else if (view.getId() == R.id.userPack){
-            movePage = new Intent(view.getContext(), ProfilePage.class);
-            startActivity(movePage);
-        }
+                case R.id.historyPack:
+                    movePage = new Intent(this, HistoryPage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.explorePack:
+                    movePage = new Intent(this, ExplorePage.class);
+                    startActivity(movePage);
+                    break;
+
+                case R.id.profilePack:
+                    movePage = new Intent(this, ProfilePage.class);
+                    startActivity(movePage);
+                    break;
+            }
+            return true;
+        });
     }
 }
